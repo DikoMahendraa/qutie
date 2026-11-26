@@ -1,0 +1,56 @@
+appId: com.dikomahendraa.qutie
+productName: Qutie
+copyright: Copyright © Qutie contributors
+directories:
+  buildResources: build
+  output: release
+files:
+  - out/**/*
+  - resources/**/*
+  - package.json
+asar: true
+asarUnpack:
+  - resources/**
+mac:
+  category: public.app-category.productivity
+  icon: resources/icon.png
+  target:
+    - target: dmg
+      arch:
+        - arm64
+        - x64
+  extendInfo:
+    LSUIElement: true
+    NSAppleEventsUsageDescription: Qutie uses System Events to copy the text you selected.
+  identity: null
+dmg:
+  artifactName: Qutie-${version}-mac-${arch}.${ext}
+win:
+  icon: resources/icon.png
+  target:
+    - target: nsis
+      arch:
+        - x64
+    - target: portable
+      arch:
+        - x64
+nsis:
+  oneClick: true
+  perMachine: false
+  artifactName: Qutie-${version}-win-setup.${ext}
+portable:
+  artifactName: Qutie-${version}-win-portable.${ext}
+linux:
+  icon: resources/icon.png
+  category: Utility
+  maintainer: Qutie contributors
+  target:
+    - AppImage
+    - deb
+appImage:
+  artifactName: Qutie-${version}-linux.${ext}
+deb:
+  artifactName: Qutie-${version}-linux-${arch}.${ext}
+  depends:
+    - xdotool
+publish: null
